@@ -1,4 +1,4 @@
-et express = require("express");
+let express = require("express");
 let app = new express();
 app.set("view engine","ejs");
 
