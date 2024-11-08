@@ -1,24 +1,87 @@
 <html>
 <head>
-<style>
-table, td, th {
-border: 1px solid orange;
-}
-</style>
+   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F9F9F9;
+      margin: 0;
+      padding: 0;
+    }
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 2.5rem;
+      color: #FF5E57;
+    }
+    .center {
+      text-align: center;
+      margin: 20px 0;
+      color: #FF5E57;
+    }
+    .donut-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 20px;
+      justify-items: center;
+    }
+    .donut-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 250px;
+    }
+    .donut-card:hover {
+      transform: translateY(-10px);
+    }
+    .donut-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .donut-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+    .donut-price {
+      font-size: 1rem;
+      color: #333;
+    }
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .donut-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 900px) {
+      .donut-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .donut-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-Here are the Concert locations and featured donuts: <br /><br />
-<table>
-<thead>
-<th>Concert Location</th>
-<th>Featured Donut</th>
-</thead>
-<% for (let iCount=0; iCount < aConcerts.length; iCount++) { %>
-<tr>
-<td><%= aConcerts[iCount].location %></td>
-<td><%= aConcerts[iCount].featured_donut %></td>
-</tr>
-<% } %>
-</table>
+<h2>PDC Donuts</h2>
+<h4 class="center"> It's not about the website...... its about the taste of the donuts! :-)</h4>
+<div class="donut-container">
+ <% for (let i = 0; i < aDonutList.length; i++) { %>
+  <div class="donut-card">
+    <img src="<%=aDonutList[i].image_link%>" alt="Donut">
+    <div class="donut-name"><%=aDonutList[i].donut_name%></div>
+    <div class="donut-price">$<%=aDonutList[i].price%></div>
+  </div>
+ <% } %>
+</div>
 </body>
 </html>
